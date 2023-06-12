@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Details Page</title>
+    <link rel="stylesheet" href="styleprodspecific.css" />
+    <link rel="stylesheet" href="test.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <a href="/index.html"
+        ><img src="/img/rainydays-logo.svg" alt="comany logo and homebutton"
+      /></a>
+      <nav class="navbar">
+        <ul>
+          <div class="dropdown" id="hamburger">
+            <button class="dropbtn"></button>
+            <span id="bar"></span>
+            <span id="bar"></span>
+            <span id="bar"></span>
+            <div class="dropdown-content" id="dropdowncont">
+              <a href=""><i class="bx bx-user"></i>Sign in or create account</a>
+              <a href="/contactus.html"
+                ><i class="bx bx-support"></i>Contact us
+              </a>
+              <a href="/about.html"><i class="bx bx-cloud-rain"></i>About us</a>
+              <a href=""><i class="bx bxs-star"></i>Warrenty & return policy</a>
+            </div>
+          </div>
+        </ul>
+
+        <div class="shoppingcart">
+          <div class="cart"><i class="bx bx-cart"></i></div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="arrow"></div>
+      <ul class="prodholder">
+        <li class="item">
+          <div class="box">
+            <div class="slide-img" id="image-box">
+              <img src="" alt="title" id="itemImage" />
+            </div>
+          </div>
+          <div class="mcolor">
+            <div class="differentcolors">
+              <input type="radio" id="Colors-${item.id}" name="colors" />
+            </div>
+          </div>
+          <div class="size-options">
+            <h4>Available Sizes:</h4>
+            <div class="select-container">
+              <select id="sizeSelect">
+                <option value="">Choose Size</option>
+              </select>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="modal-close">&times;</span>
+          <img id="modal-image" src="" alt="Preview Image" />
+        </div>
+      </div>
+      <div class="itemsdetail">
+        <div class="prodtext">
+          <h1 class="title"></h1>
+          <span class="colors"></span>
+          <h2 class="price"></h2>
+          <p class="description"></p>
+          <div class="add-to-cart-button"></div>
+          <!-- Add this div for the add to cart button -->
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="fotcontainer">
+        <ul class="fot">
+          <a href="#"><h3 class="contact">Contact us</h3></a>
+          <a href="/about.html"><h3 class="about">About us</h3></a>
+          <li class="sosicons">
+            <a href=""><i class="bx bxl-facebook-square">Facebook</i></a>
+          </li>
+          <li class="sosicons">
+            <a href=""><i class="bx bxl-instagram">Instagram</i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="paycont">
+        <div class="paymenticons">
+          <p class="pay">payment methods accepted</p>
+          <div class="visa"><i class="bx bxl-visa"></i></div>
+          <div class="mast"><i class="bx bxl-mastercard" undefined></i></div>
+        </div>
+      </div>
+
+      <div class="subscribecont">
+        <div class="mailsub">
+          <h4 class="m">
+            Enter your email to receive new product releases, special offers and
+            deals.
+          </h4>
+          <input
+            type="add email for subscription"
+            placeholder="Enter your email..."
+          />
+          <button class="signup">Sign up</button>
+          <button class="nty">You can unsubscribe at anytime</button>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const fetchItemDetails = async () => {
+        try {
+          const urlParams = new URLSearchParams(window.location.search);
+          const itemId = urlParams.get("id");
+
+          if (!itemId) {
+            console.log("Item ID is missing.");
+            return;
+          }
+
+          const response = await fetch(
+            `https://api.noroff.dev/api/v1/rainy-days/${itemId}`
+          );
+          const item = await response.json();
+
+          // Set the item details in the corresponding elements
+          const itemImage = document.getElementById("itemImage");
+          itemImage.src = item.image;
+
+          const titleElement = document.querySelector(".title");
+          titleElement.textContent = item.title;
+
+          const priceElement = document.querySelector(".price");
+          priceElement.textContent = `Price: $${item.price}`;
+
+          const descriptionElement = document.querySelector(".description");
+          descriptionElement.textContent = item.description;
+
+          // Create options for the select menu
+          const sizeSelect = document.getElementById("sizeSelect");
+          item.sizes.forEach((size) => {
+            const option = document.createElement("option");
+            option.value = size;
+            option.textContent = size;
+            sizeSelect.appendChild(option);
+          });
+
+          // Add event listener to open the modal
+          itemImage.addEventListener("click", () => {
+            const modal = document.getElementById("modal");
+            modal.style.display = "block";
+          });
+
+          // Add event listener to close the modal
+          const closeModal = () => {
+            const modal = document.getElementById("modal");
+            modal.style.display = "none";
+          };
+
+          const modal = document.getElementById("modal");
+          modal.addEventListener("click", (event) => {
+            if (
+              event.target === modal ||
+              event.target.classList.contains("modal-close")
+            ) {
+              closeModal();
+            }
+          });
+
+          // Set the image in the modal
+          const modalImage = document.getElementById("modal-image");
+          modalImage.src = item.image;
+
+          // Add "Add to Cart" button
+          const addToCartButton = document.querySelector(".add-to-cart-button");
+          addToCartButton.innerHTML = `
+      <a href="checkoutpage.html?id=${item.id}&title=${encodeURIComponent(
+            item.title
+          )}&size=${encodeURIComponent(sizeSelect.value)}&price=${
+            item.price
+          }" class="btn">Add to Cart</a>
+    `;
+
+          // Add event listener to the select menu for updating the "Add to Cart" button
+          sizeSelect.addEventListener("change", () => {
+            addToCartButton.innerHTML = `
+        <a href="checkoutpage.html?id=${item.id}&title=${encodeURIComponent(
+              item.title
+            )}&size=${encodeURIComponent(sizeSelect.value)}&price=${
+              item.price
+            }" class="btn">Add to Cart</a>
+      `;
+          });
+        } catch (error) {
+          console.log("An error occurred:", error);
+        }
+      };
+      fetchItemDetails();
+
+      // Add event listener to the shopping cart icon
+      const cartIcon = document.querySelector(".cart");
+      cartIcon.addEventListener("click", addToCart);
+
+      // Function to handle the click event
+      function addToCart() {
+        const selectedSize = document.querySelector(
+          'input[name="sizes"]:checked'
+        );
+        if (!selectedSize) {
+          console.log("Please select a size.");
+          return;
+        }
+
+        const size = selectedSize.value;
+        const itemId = urlParams.get("id"); // Retrieve the item ID from the URL params
+
+        // Update the cart with the selected item
+        updateCart(itemId, size);
+
+        // Display a success message or perform any other desired action
+        console.log("Item added to cart successfully!");
+      }
+      // Add back arrow link
+      const arrowElement = document.querySelector(".arrow");
+      arrowElement.innerHTML = `
+      <a href="javascript:history.back()">
+        <i class="fas fa-arrow-left"></i>
+      </a>
+    `;
+    </script>
+    <script src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rainydays Product specific / semesterproject Jorgen</title>
+    <link rel="shortcut icon" href="/img/pageicon-rd.png" />
+    <link rel="stylesheet" href="styleprodspecific.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <a href="/index.html"
+        ><img src="/img/rainydays-logo.svg" alt="" width="140px"
+      /></a>
+      <nav class="navbar">
+        <ul>
+          <li><a href="#">Men</a></li>
+          <li><a href="#">Women</a></li>
+          <div class="dropdown" id="hamburger">
+            <button class="dropbtn"></button>
+            <span id="bar"></span>
+            <span id="bar"></span>
+            <span id="bar"></span>
+            <div class="dropdown-content" id="dropdowncont">
+              <a href=""><i class="bx bx-user"></i>Sign in or create account</a>
+              <a href="/contactus.html"><i class="bx bx-support"></i>Contact us </a>
+              <a href="/about.html"><i class="bx bx-cloud-rain"></i>About us</a>
+              <a href=""><i class="bx bxs-star"></i>Warrenty & return policy</a>
+            </div>
+          </div>
+        </ul>
+
+        <div class="shoppingcart">
+          <div class="cart"><i class="bx bx-cart"></i></div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="prodcol">
+        <ul class="prodholder">
+          <li class="item-a">
+            <div class="box">
+              <div class="slide-img" id="image-box" >
+                <img src="/img/prod-img/RainyDays_Jacket7.png" alt="">
+              </div>
+            </div>
+
+            <div class="mcolor">
+              <div class="img-container">
+                <input type="radio" id="img-01" name="image"onclick="myfunction(this)">
+                <input type="radio" id="img-02" name="image"onclick="myfunction(this)">
+                <input type="radio" id="img-03" name="image"onclick="myfunction(this)">
+               
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+        <div class="itemsdetail">
+          <div class="prodtext">
+            <h1>Pantagoina Fleece</h1>
+            <h2 class="pr">30$ dollars</h2>
+            <p>
+              Classic full-zip fleece jacket made of a natural and synthetic
+              blend of wool, polyester and nylon containing 3-52% recycled
+              materials. Double-faced fleece is warm and versatile. Fair Trade
+              Certified™ sewn. Pantagoina
+            </p>
+            
+          </div>
+
+          
+          <div class="fav">
+            <p>Add to favorites</p>
+            <i class='bx bx-heart'></i>
+          </div>
+
+         
+          <div class="dropdownmenusizes">
+            <button class="size">
+              Size
+              <i class="bx bx-down-arrow"></i>
+            </button>
+  
+            <div class="sortbysize">
+              <ul class="sml">
+                <li class="xs"><input type="checkbox" name="extra" id="" />XS</li>
+                <li class="s"><input type="checkbox" name="small" id="" />S</li>
+                <li class="m"><input type="checkbox" name="medium" id="" />M</li>
+                <li class="m"><input type="checkbox" name="large" id="" />L</li>
+              </ul>
+            </div>
+          </div>
+          <button id="js-toggle-button">Add to cart</button>
+        <div id="js-checkout" class="checkadd">
+          <div class="cartpopup">
+            <h3 class="shop">successfully added to cart</h3>
+            <h4 class="conti">Continue shopping or<a href="/checkoutpage.html">checkout</a></h4>
+           
+           
+
+            <div class="image-box">
+              <img src="/img/prod-img/RainyDays_Jacket7.png"  alt="cart item - continue shopping or check out" srcset="">
+            </div>
+            <div class="about">
+              <h5>Pantagoina fleece</h5>
+              <div class="price">30$ dollars</div>
+              <div class="ship">Free shipping</div>
+            </div>
+      </div>
+        </div>
+
+        
+        
+        
+    </main>
+
+    <section class="moresuggestions">
+      <div class="prodcolbot">
+        <ul class="prodholderbottum">
+       
+
+
+          <li class="item-d">
+            <div class="box-bot">
+              <div class="slide-img-bot">
+                <img class="bot"
+                  src="/img/prod-img/RainyDays_Jacket6.png"
+                  alt="insulated jacket 49$"
+                />
+               
+              </div>
+              <div class="detail-box">
+                <div class="type">
+                  <a href="/prodspecific-3.html">Insulated jacket</a>
+                  <span>30$</span>
+                  <span>New arrivals</span>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="item-e">
+            <div class="box-bot">
+              <div class="slide-img-bot">
+                <img class="bot"
+                  src="/img/prod-img/RainyDays_Jacket2.png"
+                  alt="Pantagonia fleece jacket 30$"
+                />
+               
+              </div>
+              <div class="detail-box">
+                <div class="type">
+                  <a href="/prod-specific-7.html">Rainydays Windbreaker</a>
+                  <span>30$</span>
+                  <span>New arrivals</span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        
+      </div>
+     
+    </section>
+    <div class="imgholder">
+      <img src="/img/hiksnow3.jpg"  alt="" srcset="">
+      <img src="/img/bgp002.jpg"  alt="" srcset="">
+    </div>
+    <footer>
+      <div class="fotcontainer">
+        <ul class="fot">
+          <a href="#"><h3 class="contact">Contact us</h3></a>
+          <a href="/about.html"><h3 class="about">About us</h3></a>
+          <li class="sosicons">
+            <a href=""><i class="bx bxl-facebook-square">Facebook</i></a>
+          </li>
+          <li class="sosicons">
+            <a href=""><i class="bx bxl-instagram">Instagram</i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="paycont">
+        <div class="paymenticons">
+          <p class="pay">payment methods accepted</p>
+          <div class="visa"><i class="bx bxl-visa"></i></div>
+          <div class="mast"><i class="bx bxl-mastercard" undefined></i></div>
+        </div>
+      </div>
+
+      <div class="subscribecont">
+        <div class="mailsub">
+          <h4 class="m">
+            Enter your email to receive new product releases, special offers and
+            deals.
+          </h4>
+          <input
+            type="add email for subscription"
+            placeholder="Enter your email..."
+          />
+          <button class="signup">Sign up</button>
+          <button class="nty">You can unsubscribe at anytime</button>
+        </div>
+      </div>
+    </footer>
+    <script src="/checkout.js"></script>
+    <script src="/coloroptions.js"></script>
+    <script src="/main.js"></script>
+  </body>
+</html>

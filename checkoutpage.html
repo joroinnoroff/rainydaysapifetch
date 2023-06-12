@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rainydays Checkoutpage / semesterproject Jorgen</title>
+    <link rel="shortcut icon" href="/img/pageicon-rd.png" />
+    <link rel="stylesheet" href="checkoutpage.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <a href="/index.html"
+        ><img src="/img/rainydays-logo.svg" alt="Home button / company logo"
+      /></a>
+      <nav class="navbar">
+        <ul>
+          <li>Checkout page</li>
+
+          <div class="dropdown" id="hamburger">
+            <button class="dropbtn"></button>
+            <span id="bar"></span>
+            <span id="bar"></span>
+            <span id="bar"></span>
+            <div class="dropdown-content" id="dropdowncont">
+              <a href=""><i class="bx bx-user"></i>Sign in or create account</a>
+              <a href=""><i class="bx bx-support"></i>Contact us </a>
+              <a href="/about.html"><i class="bx bx-cloud-rain"></i>About us</a>
+              <a href=""><i class="bx bxs-star"></i>Warrenty & return policy</a>
+            </div>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="contholder">
+        <div class="midcontainer">
+          <div class="checkout">
+            <div class="yitems">
+              <h2>Your items:</h2>
+              <hr />
+            </div>
+          </div>
+          <div class="prodcol">
+            <ul class="prodholder">
+              <li class="item">
+                <div class="box">
+                  <div class="slide-img" id="image-box">
+                    <img src="" alt="" id="itemImage" />
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="item-count">
+              <div class="plus">+</div>
+              <input type="number" aria-label="quantity" readonly value="1" />
+              <div class="minus">-</div>
+              <div class="rem">Remove</div>
+            </div>
+          </div>
+          <div class="itemsdetail">
+            <div class="prodtext">
+              <h1 class="title"></h1>
+              <p class="sizeselected"></p>
+              <span class="price"></span>
+            </div>
+          </div>
+        
+          <div class="price">
+            <hr />
+            <p class="price">
+              Item total: <span class="item-total"></span> dollars
+            </p>
+            <p>Shipping: FREE</p>
+            <hr />
+            <p>Total: <span class="total"></span></p>
+          </div>
+        </div>
+        
+        <div class="form-pay">
+          <form class="signinorcheckout" id="checkoutForm">
+            <div class="shippinginfo">
+              <div class="signin">
+                Already have an account?
+                <span class="log">Sign in or create account</span>
+              </div>
+              <h4>Shipping information</h4>
+              <input
+                type="email"
+                class="ckform"
+                placeholder="Enter your email.."
+              />
+              <input
+                type="text"
+                class="ckform"
+                placeholder="First name"
+                id="firstNameInput"
+              />
+              <input
+                type="text"
+                class="ckform"
+                placeholder="Last name"
+                id="lastNameInput"
+              />
+              <input
+                type="text"
+                class="ckform"
+                placeholder="Your address"
+                id="addressInput"
+              />
+              <input
+                type="text"
+                class="ckform"
+                placeholder="Your Postal Code"
+                id="postalCodeInput"
+              />
+            </div>
+            <div class="checkotbtn">
+              <button class="chkbtn" id="checkoutButton">CheckOut</button>
+            </div>
+          </form>
+        </div>
+        
+        <footer>
+          <div class="fotcontainer">
+            <ul class="fot">
+              <a href="/contactus.html">
+                <h3 class="contact">Contact us</h3>
+              </a>
+              <a href="/about.html">
+                <h3 class="about">About us</h3>
+              </a>
+              <li class="sosicons">
+                <a href=""><i class="bx bxl-facebook-square">Facebook</i></a>
+              </li>
+              <li class="sosicons">
+                <a href=""><i class="bx bxl-instagram">Instagram</i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="paycont">
+            <div class="paymenticons">
+              <p class="pay">payment methods accepted</p>
+              <div class="visa"><i class="bx bxl-visa"></i></div>
+              <div class="mast"><i class="bx bxl-mastercard"></i></div>
+            </div>
+          </div>
+        
+          <div class="subscribecont">
+            <div class="mailsub">
+              <h4 class="m">
+                Enter your email to receive new product releases, special offers and
+                deals.
+              </h4>
+              <input
+                type="add email for subscription"
+                placeholder="Enter your email..."
+              />
+              <button class="signup">Sign up</button>
+              <button class="nty">You can unsubscribe at any time</button>
+            </div>
+          </div>
+        </footer>
+        
+        <script defer>
+          const fetchItemDetails = async () => {
+            try {
+              const urlParams = new URLSearchParams(window.location.search);
+              const itemId = urlParams.get("id");
+              const size = urlParams.get("size");
+        
+              if (!itemId) {
+                console.log("Item ID is missing.");
+                return;
+              }
+        
+              const response = await fetch(
+                `https://api.noroff.dev/api/v1/rainy-days/${itemId}`
+              );
+              const item = await response.json();
+        
+              const itemImage = document.getElementById("itemImage");
+              itemImage.src = item.image;
+        
+              const titleElement = document.querySelector(".title");
+              titleElement.textContent = item.title;
+        
+              const priceElement = document.querySelector(".price");
+              priceElement.textContent = `Price: $${item.price}`;
+        
+              const itemTotalElement = document.querySelector(".item-total");
+              itemTotalElement.textContent = `$${item.price}`;
+        
+              const totalElement = document.querySelector(".total");
+              totalElement.textContent = `$${item.price}`;
+        
+              const sizeselectedElement = document.querySelector(".sizeselected");
+              sizeselectedElement.textContent = `Size: ${size}`;
+            } catch (error) {
+              console.log("An error occurred:", error);
+            }
+          };
+        
+          fetchItemDetails();
+        
+          checkoutButton.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const itemId = urlParams.get("id");
+  const title = urlParams.get("title");
+  const size = urlParams.get("size");
+  const price = urlParams.get("price");
+
+  if (itemId && title && size && price) {
+    const checkoutLink = `checkout-complete.html?id=${itemId}&title=${encodeURIComponent(
+      title
+    )}&size=${encodeURIComponent(size)}&price=${price}`;
+    window.location.href = checkoutLink;
+  } else {
+    console.log("Missing parameter values.");
+  }
+});
+
+
+        </script>
+        
+    <script src="/main.js"></script>
+  </body>
+</html>

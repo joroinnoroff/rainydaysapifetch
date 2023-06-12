@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rainydays Homepage / semesterproject Jorgen</title>
+    <link rel="shortcut icon" href="/img/pageicon-rd.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <video autoplay loop muted="bgloop012.mp4" class="back-video">
+      <source src="/img/bgloop012.mp4" type="video/mp4" />
+    </video>
+    <header>
+      <a href="/index.html"
+        ><img src="/img/rainydays-logo.svg" alt="comany logo and homebutton"
+      /></a>
+      <nav class="navbar">
+        <ul>
+          <li><a href="/productsall.html">Men</a></li>
+          <li><a href="/productsall.html">Women</a></li>
+
+          <div class="dropdown" id="hamburger">
+            <button class="dropbtn" id="hamburger"></button>
+            <span id="bar"></span>
+            <span id="bar"></span>
+            <span id="bar"></span>
+            <div class="dropdown-content" id="dropdowncont">
+              <a href="#"
+                ><i class="bx bx-user"></i>Sign in or create account</a
+              >
+              <a href="/contactus.html"
+                ><i class="bx bx-support"></i>Contact us
+              </a>
+              <a href="/about.html"><i class="bx bx-cloud-rain"></i>About us</a>
+              <a href=""><i class="bx bxs-star"></i>Warrenty & return policy</a>
+            </div>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="explorebutton">
+        <a href="productsall.html"
+          >Explore<i class="bx bx-right-arrow-alt" style="color: #ffffff"></i
+        ></a>
+      </div>
+
+      <div class="prodcol">
+        <div class="resultscontainer"></div>
+      </div>
+    </main>
+    <footer>
+      <div class="fotcontainer">
+        <ul class="fot">
+          <a href="/contactus.html"><h3 class="contact">Contact us</h3></a>
+          <a href="/about.html"><h3 class="about">About us</h3></a>
+
+          <li class="sosicons">
+            <a href=""><i class="bx bxl-facebook-square">Facebook</i></a>
+          </li>
+          <li class="sosicons">
+            <a href=""><i class="bx bxl-instagram">Instagram</i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="paycont">
+        <div class="paymenticons">
+          <p class="pay">payment methods accepted</p>
+          <div class="visa"><i class="bx bxl-visa"></i></div>
+          <div class="mast"><i class="bx bxl-mastercard" undefined></i></div>
+        </div>
+      </div>
+
+      <div class="subscribecont">
+        <div class="mailsub">
+          <h4 class="m">
+            Enter your email to receive new product releases, special offers and
+            deals.
+          </h4>
+          <input
+            type="add email for subscription"
+            placeholder="Enter your email..."
+          />
+          <button class="signup">Sign up</button>
+          <button class="nty">You can unsubscribe at anytime</button>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/main.js"></script>
+  </body>
+</html>
