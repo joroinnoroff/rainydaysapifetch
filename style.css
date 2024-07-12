@@ -17,6 +17,13 @@ main {
   min-height: 100vh;
 }
 
+button {
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
 .back-video {
   position: fixed;
   right: 0%;
